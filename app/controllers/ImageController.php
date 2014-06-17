@@ -17,6 +17,10 @@ class ImageController extends BaseController
      * @var integer
      */
     protected $imageSizeLimit;
+    /**
+     * @var string
+     */
+    protected $imageBucket;
 
     /**
      *
@@ -26,6 +30,7 @@ class ImageController extends BaseController
         $this->imageWidth = Config::get('app.image.width');
         $this->imageHeight = Config::get('app.image.height');
         $this->imageSizeLimit = Config::get('app.image.size_limit');
+        $this->imageBucket = Config::get('app.image.s3_bucket');
     }
 
     /**
@@ -74,7 +79,7 @@ class ImageController extends BaseController
             /** @var \Aws\S3\S3Client $s3 */
             $s3 = AWS::get('s3');
             $s3->putObject([
-                'Bucket' => 'laravel-on-heroku',
+                'Bucket' => $this->imageBucket,
                 'Key' => '/demo/' . $userImage->id . '.jpg',
                 'SourceFile' => $path,
             ]);

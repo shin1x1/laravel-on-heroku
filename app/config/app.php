@@ -190,5 +190,6 @@ return array(
         'width' => 320,
         'height' => 240,
         'size_limit' => 1 * 1024 * 1024,
+        's3_bucket' => 'laravel-on-heroku',
     ],
 );

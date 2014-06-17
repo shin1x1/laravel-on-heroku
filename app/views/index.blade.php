@@ -1,6 +1,6 @@
 <?php
 /**
- * @type \Illuminate\Database\Eloquent\Collection $images
+ * @type \Illuminate\Database\Eloquent\Collection|UserImage[] $images
  */
 ?>
 @extends('base')
@@ -21,66 +21,11 @@
     <?php foreach ($images as $image): ?>
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <a class="thumbnail" href="#">
-                <img class="img-responsive" src="https://s3-ap-northeast-1.amazonaws.com/laravel-on-heroku/<?= e($loginUser->name) ?>/<?= e($image->id) ?>.jpg"><br>
+                <img class="img-responsive" src="<?= e($image->imageUrl()) ?>"><br>
                 create_at: <?= e($image->created_at) ?>
             </a>
         </div>
     <?php endforeach; ?>
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        <div class="col-lg-3 col-md-4 col-xs-6 thumb">-->
-<!--            <a class="thumbnail" href="#">-->
-<!--                <img class="img-responsive" src="http://placehold.it/400x300">-->
-<!--            </a>-->
-<!--        </div>-->
     </div>
 
     <hr>
