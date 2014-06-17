@@ -1,0 +1,12 @@
+#!/bin/sh
+
+heroku create -r heroku
+heroku config:set LARAVEL_ENV=heroku
+
+heroku addons:add heroku-postgresql
+heroku addons:add newrelic:stark
+heroku addons:add scheduler
+heroku addons:add sendgrid
+heroku addons:add redistogo
+heroku addons:add papertrail
+heroku addons:add librato
