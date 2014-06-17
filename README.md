@@ -21,6 +21,13 @@ $ ./heroku_create
 $ git push heroku master
 ```
 
+migration database.
+
+```
+$ heroku run php artisan migrate
+$ heroku run php artisan db:seed
+```
+
 add S3 api key that allow writable to S3 Bucket.
 
 ```
