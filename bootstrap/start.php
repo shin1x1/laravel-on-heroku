@@ -11,11 +11,6 @@
 |
 */
 
-use Illuminate\Cache\MemcachedConnector;
-use Illuminate\Cache\MemcachedStore;
-use Illuminate\Cache\Repository;
-use Illuminate\Session\CacheBasedSessionHandler;
-
 $app = new Illuminate\Foundation\Application;
 
 /*
@@ -72,36 +67,5 @@ require $framework . '/Illuminate/Foundation/start.php';
 | from the actual running of the application and sending responses.
 |
 */
-// for memcachier
-class MemcachedWithSaslConnector extends MemcachedConnector
-{
-    /**
-     * @return Memcached
-     */
-    protected function getMemcached()
-    {
-        $memcached = parent::getMemcached();
-
-        $memcached->setOption(Memcached::OPT_BINARY_PROTOCOL, true);
-        $memcached->setSaslAuthData(getenv('MEMCACHIER_USERNAME'), getenv('MEMCACHIER_PASSWORD'));
-
-        return $memcached;
-    }
-}
-
-Cache::extend('MemcachedWithSasl', function($app) {
-    $servers = $app['config']['cache.memcached'];
-
-    $memcached = (new MemcachedWithSaslConnector())->connect($servers);
-
-    return new Repository(new MemcachedStore($memcached, $app['config']['cache.prefix']));
-});
-
-Session::extend('MemcachedWithSasl', function($app) {
-    $minutes = $app['config']['session.lifetime'];
-//        var_dump($this->app['cache']->driver($driver));exit;
-
-    return new CacheBasedSessionHandler($app['cache']->driver('MemcachedWithSasl'), $minutes);
-});
 
 return $app;
