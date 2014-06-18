@@ -8,7 +8,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <?= stylesheet_link_tag() ?>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
@@ -37,13 +36,8 @@
     <!-- /.container -->
 </nav>
 
-<?php if (getenv('DYNO')): ?>
-<div style="margin-top: 20px" class="container">
-    <h2>Dyno = <?= e(getenv('DYNO')) ?></h2>
-</div>
-<?php endif; ?>
-
-<div style="margin-top: 20px" class="container">
+<div class="container" style="margin-top: 20px;">
+    <h1 class="page-header">Dyno = <?= e(getenv('DYNO')) ?></h1>
     <?php if (!empty($message)): ?>
         <div class="alert alert-<?= e($message['type']) ?> alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -52,6 +46,5 @@
     <?php endif; ?>
     @yield('sub_content')
 </div>
-<?= javascript_include_tag() ?>
 </body>
 </html>

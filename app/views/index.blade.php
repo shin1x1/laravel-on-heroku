@@ -12,7 +12,6 @@
     <div class="row">
 
         <div class="col-lg-12" style="margin-bottom: 20px;">
-            <h1 class="page-header">Thumbnail Gallery</h1>
             <div>
                 <a href="upload" class="btn btn-info">upload</a>
             </div>
